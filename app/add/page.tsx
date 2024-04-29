@@ -7,7 +7,7 @@ const Add = () => {
         <div className="p-10 bg-white h-full flex flex-col gap-4">
             <AddForm action={addTodo} />
             <Todos />
-
+            
         </div>
     );
 }

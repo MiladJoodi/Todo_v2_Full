@@ -23,8 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${outfit.className} bg-gray-100 mx-auto flex justify-center h-screen py-10`}>
-        <main className="w-full md:w-[440px] mx-auto bg-white overflow-hidden rounded-xl shadow-md">
+      <body className={`${outfit.className} bg-gray-100 mx-auto flex justify-center py-10`}>
+        <main className="main w-full md:w-[440px] mx-auto bg-white rounded-xl shadow-md overflow-y-scroll">
           <Header />
         {children}
         </main>

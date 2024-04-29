@@ -76,3 +76,31 @@
       @apply bg-background text-foreground;
     }
   }
+
+  /* main scrollbar */
+  .main {
+    --sb-track-color: #efefef;
+    --sb-thumb-color: #b8bae9;
+    --sb-size: 10px;
+  }
+  
+  .main::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+  
+  .main::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 5px;
+  }
+  
+  .main::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 3px;
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    .main {
+        scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }
