@@ -1,7 +1,13 @@
 "use client"
 
 import { editTodo } from "@/actions/actions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormState } from 'react-dom'
+import { toast } from "./ui/use-toast";
+
+const initialState = {
+    message: '',
+  }
 
 export type todoType = {
     id: string;
@@ -11,7 +17,11 @@ export type todoType = {
 }
 
 const EditTodo = ({ todo }: { todo: todoType }) => {
-    const [editTodoShow, setEditTodoShow] = useState(false)
+    const [state, action] = useFormState(editTodo, {
+        message: "",
+      });
+      
+      const [editTodoShow, setEditTodoShow] = useState(false)
 
     const showEditInput = () => {
         setEditTodoShow(!editTodoShow)
@@ -22,12 +32,30 @@ const EditTodo = ({ todo }: { todo: todoType }) => {
         setEditTodoShow(false)
     }
 
+
+     // useEffect
+     useEffect(()=> {
+        if(state.message === "success"){
+            toast({
+                title: "Hooray 🍕",
+                description: "Todo Edited!"
+            })
+        }
+        if(state.message === "empty"){
+            toast({
+                title: "Empty ❌",
+                description: "It's Empty!"
+            })
+        }
+    }, [state])
+    
+
     return (
         <div className="flex items-center gap-2 h-[25px]">
 
             {editTodoShow ? (
                 <form
-                    action={editTodo}
+                    action={action}
                     className="flex items-center"
                     onSubmit={submitHandler}
                 >

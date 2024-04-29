@@ -42,7 +42,12 @@ export async function deleteTodo(formData: FormData){
 }
 
 // edit
-export async function editTodo(formData: FormData){
+
+type FormState = {
+    message: string;
+  }
+  
+export async function editTodo(prevState: FormState ,formData: FormData){
     console.log("edit")
     const newTitle = formData.get("newTodo") as string
     const todoId = formData.get("todoId") as string
@@ -57,6 +62,6 @@ export async function editTodo(formData: FormData){
     })
     revalidatePath("/")
     return{
-        status: "success"
+        message: "success"
     }
 }
