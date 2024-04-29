@@ -1,6 +1,6 @@
 export type todoType = {
-    id: string
-    title? : string | null
-    isCompleted: boolean
-    createdAt: Date
+    id: string;
+    title? : string | null;
+    isCompleted: boolean;
+    createdAt: Date;
 }

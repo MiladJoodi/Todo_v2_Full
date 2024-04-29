@@ -40,3 +40,23 @@ export async function deleteTodo(formData: FormData){
         status: "success"
     }
 }
+
+// edit
+export async function editTodo(formData: FormData){
+    console.log("edit")
+    const newTitle = formData.get("newTodo") as string
+    const todoId = formData.get("todoId") as string
+
+    await prisma.todo.update({
+        where: {
+            id: todoId
+        },
+        data: {
+            title: newTitle
+        }
+    })
+    revalidatePath("/")
+    return{
+        status: "success"
+    }
+}
